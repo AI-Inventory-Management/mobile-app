@@ -1,109 +1,137 @@
 import React from "react";
-import { Text, TextInput, View, Button, StyleSheet } from "react-native";
+import {
+  Text,
+  TextInput,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 
 const Form = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>NUEVA TIENDA</Text>
-      <View>
-        <Text style={styles.texts}>Nombre</Text>
-        <TextInput style={styles.input} placeholder="Ej. Oczo" />
-        <Text style={styles.texts}>Estado</Text>
-        <TextInput style={styles.input} />
-        <Text style={styles.texts}>Municipio</Text>
-        <TextInput style={styles.input} />
-        <View style={styles.column}>
-          <View>
+      <View style={styles.formContainer}>
+        <View style={styles.inputContainer}>
+          <Text style={styles.texts}>Nombre</Text>
+          <TextInput style={styles.input} placeholder="Miscelánea Caro" />
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.texts}>Estado</Text>
+          <TextInput style={styles.input} placeholder="Estado de México" />
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.texts}>Municipio</Text>
+          <TextInput style={styles.input} placeholder="Xonacatlán" />
+        </View>
+
+        <View style={styles.locationContainer}>
+          <View style={styles.locationInputContainer}>
             <Text style={styles.texts}>Latitud</Text>
-            <TextInput style={styles.miniInput} placeholder="Ej. -19.42" />
+            <TextInput
+              keyboardType="numeric"
+              style={[styles.input, { width: "95%" }]}
+              placeholder="-19.42"
+            />
           </View>
-          <View>
+          <View style={styles.locationInputContainer}>
             <Text style={styles.texts}>Longitud</Text>
-            <TextInput style={styles.miniInput} placeholder="Ej. -19.42" />
-          </View>
-          <View>
-            <Text style={styles.texts}>CP</Text>
-            <TextInput style={styles.miniInput} placeholder="Ej. 53100" />
+            <TextInput
+              keyboardType="numeric"
+              style={[styles.input, { width: "95%" }]}
+              placeholder="32.42"
+            />
           </View>
         </View>
-        <Text style={styles.texts}>Dirección</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ej. Av. Jose Maria Morelos, San Francisco Tepojaco"
-        />
+
+        <View style={styles.addressContainer}>
+          <Text style={styles.texts}>Dirección</Text>
+          <TextInput
+            numberOfLines={1}
+            style={styles.input}
+            placeholder="Av. Jose Maria Morelos, San Francisco Tepojaco"
+          />
+        </View>
+
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Enviar</Text>
+        </TouchableOpacity>
       </View>
-      <Button
-        title="Enviar"
-        accessibilityLabel="Learn more about this purple button"
-        color="#B5271C"
-      />
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
-    backgroundColor: "#FFFFFF",
-    margin: "auto",
+    flex: 1,
     width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  texts: {
-    color: "black",
-    fontSize: 15,
-    fontWeight: "bold",
-    width: 80,
-    color: "#636363",
+    backgroundColor: "#FFFFFF",
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
   title: {
+    fontSize: 32,
+    alignSelf: "flex-start",
     fontWeight: "bold",
-    fontSize: 35,
-    textAlign: "left",
-    margin: "auto",
-    marginBottom: 20,
+    marginBottom: 16,
+    color: "#333",
   },
-  column: {
-    flexDirection: "row",
+  formContainer: {
+    width: "100%",
+    height: "100%",
+    padding: 10,
+  },
+  texts: {
+    fontSize: 14,
+    color: "black",
+    alignSelf: "flex-start",
+    fontWeight: "bold",
+    color: "#555",
+    marginLeft: 2,
+    marginBottom: 10,
   },
   input: {
-    backgroundColor: "#E8E8E8",
-    width: 250,
-    padding: 0,
-    paddingLeft: 5,
-    borderRadius: 8,
-    marginBottom: 20,
-    shadowColor: "#000",
+    backgroundColor: "#f5f5f5",
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+
+    shadowColor: "#555",
     shadowOffset: {
       width: 0,
-      height: 3,
+      height: 1,
     },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-
-    elevation: 6,
+    shadowOpacity: 0.16,
+    shadowRadius: 1.51,
+    elevation: 2,
   },
-  miniInput: {
-    backgroundColor: "#E8E8E8",
-    width: 70,
-    padding: 0,
-    paddingLeft: 5,
-    borderRadius: 10,
+  inputContainer: {
     marginBottom: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-
-    elevation: 6,
+  },
+  locationContainer: {
+    width: "100%",
+    flexDirection: "row",
+    marginBottom: 20,
+  },
+  locationInputContainer: {
+    flex: 1,
+    alignItems: "center",
   },
   button: {
-    paddingTop: 20,
-    borderRadius: 10
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "red",
+    borderRadius: 50,
+    color: "white",
+    padding: 16,
+    marginTop: 24,
+  },
+  buttonText: {
+    fontSize: 14,
+    color: "#f9f9f9",
+    fontWeight: "bold",
+    textTransform: "uppercase",
   },
 });
 
